@@ -10,13 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef
+#ifndef FDF_H
 # define FDF_H
 
-typedef struct	s_point{
+typedef struct	s_point2{
 	int x;
 	int y;
+}				t_point2;
 
-}				t_point;
+typedef struct	s_point3{
+	int x;
+	int y;
+	int z;
+}				t_point3;
+
+void	put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color);
+int		abs(int a);
+void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int color);
 
 #endif

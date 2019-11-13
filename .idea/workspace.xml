@@ -11,6 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2f7aceb7-8b7f-4a79-9c08-d6e542801c93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_izometric.c" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fdf.h" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +63,7 @@
       <updated>1573315604493</updated>
       <workItem from="1573315605953" duration="975000" />
       <workItem from="1573642154264" duration="1574000" />
-      <workItem from="1573644397039" duration="4795000" />
+      <workItem from="1573644397039" duration="6357000" />
     </task>
     <servers />
   </component>
