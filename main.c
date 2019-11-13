@@ -27,6 +27,7 @@ int main()
 	p[3] = init_p3(0, 0, 80);
 	rotate_fig(p, 90, z_rotate, 4);
 	rotate_fig(p, 90, y_rotate, 4);
+	rotate_fig(p, 90, x_rotate, 4);
 	put_iso_line(mlx_ptr, win_ptr, p[0], p[1], 255);
 	put_iso_line(mlx_ptr, win_ptr, p[0], p[2], 255 * 256);
 	put_iso_line(mlx_ptr, win_ptr, p[0], p[3], 255 * 256 *256);
