@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
 
 void put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color) {
 	const int deltaX = abs(en.x - st.x);
@@ -35,7 +34,7 @@ void put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color)
 		if(error2 < deltaX)
 		{
 			error += deltaX;
-			xt.y += signY;
+			st.y += signY;
 		}
 	}
 
@@ -49,7 +48,11 @@ void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int co
 	iso_st.x = (st.x - st.y)* cos(0.5235990);
 	iso_st.y = (st.x + st.y)* sin(0.5235990) - st.z;
 	iso_en.x = (en.x - en.y)* cos(0.5235990);
-	iso_en.y = (en.x + en.y)* sin(0.5235990) - st.z;
+	iso_en.y = (en.x + en.y)* sin(0.5235990) - en.z;
+	iso_st.x += 540;
+	iso_st.y += 360;
+	iso_en.x += 540;
+	iso_en.y += 360;
 	put_line(mlx_ptr, win_ptr, iso_st, iso_en, color);
 }
 
