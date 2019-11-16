@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <math.h>
 
 void x_rotate(t_point3 *point, int angle)
 {
