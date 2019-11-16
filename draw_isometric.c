@@ -49,10 +49,10 @@ void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int co
 	iso_st.y = (st.x + st.y)* sin(0.5235990) - st.z;
 	iso_en.x = (en.x - en.y)* cos(0.5235990);
 	iso_en.y = (en.x + en.y)* sin(0.5235990) - en.z;
-	iso_st.x += 540;
-	iso_st.y += 360;
-	iso_en.x += 540;
-	iso_en.y += 360;
+	iso_st.x += 320;
+	iso_st.y += 210;
+	iso_en.x += 320;
+	iso_en.y += 210;
 	put_line(mlx_ptr, win_ptr, iso_st, iso_en, color);
 }
 
