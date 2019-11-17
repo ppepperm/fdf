@@ -19,24 +19,50 @@ int	deal_key(int key, void *param)
 	t_figure *axis;
 
 	axis = (t_figure*)param;
-	if (key == 124) {
+	if (key == 12) {
 		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
-		z_rotate(&(axis->points[1]), -10);
-		z_rotate(&(axis->points[2]), -10);
-		z_rotate(&(axis->points[3]), -10);
+		rotate_fig(axis->points, -10, z_rotate, 4);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
 	}
-	if (key == 125) {
+	if (key == 14) {
 		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
-		z_rotate(&(axis->points[1]), 10);
-		z_rotate(&(axis->points[2]), 10);
-		z_rotate(&(axis->points[3]), 10);
+		rotate_fig(axis->points, 10, z_rotate, 4);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
 		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
 	}
+	if (key == 1) {
+		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
+		rotate_fig(axis->points, -10, x_rotate, 4);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
+	}
+	if (key == 13) {
+		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
+		rotate_fig(axis->points, 10, x_rotate, 4);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
+	}
+	if (key == 0) {
+		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
+		rotate_fig(axis->points, -10, y_rotate, 4);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
+	}
+	if (key == 2) {
+		mlx_clear_window(axis->mlx_ptr, axis->win_ptr);
+		rotate_fig(axis->points, 10, y_rotate, 4);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[1], 255);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[2], 255 * 256);
+		put_iso_line(axis->mlx_ptr, axis->win_ptr, axis->points[0], axis->points[3], 255 * 256 * 256);
+	}
+	if (key == 53)
+		exit (0);
 	return 0;
 }
 int main()
@@ -49,12 +75,9 @@ int main()
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 620, 480, "fdf 21");
 	p[0] = init_p3(0, 0, 0);
-	p[2] = init_p3(0, 100, 0);
 	p[1] = init_p3(100, 0, 0);
+	p[2] = init_p3(0, 100, 0);
 	p[3] = init_p3(0, 0, 100);
-	//y_rotate(&p[1], -90);
-	//y_rotate(&p[2], -90);
-	//y_rotate(&p[3], -90);
 	axis.points = p;
 	axis.mlx_ptr = mlx_ptr;
 	axis.win_ptr = win_ptr;

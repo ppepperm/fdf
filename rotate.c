@@ -45,7 +45,6 @@ void z_rotate(t_point3 *point, int angle)
 	rad = angle * 0.0174533;
 	point->x = save.x * cos(rad) - save.y * sin(rad);
 	point->y = save.y * cos(rad) + save.x * sin(rad);
-	printf("%f\n",sqrt((point->x * point->x + point->y * point->y + point->z * point->z)));
 }
 
 void rotate_fig(t_point3 *arr,int angle, void f(t_point3*, int), int n)

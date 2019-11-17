@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 void put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color) {
 	const int deltaX = abs(en.x - st.x);

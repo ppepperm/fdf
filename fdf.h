@@ -15,6 +15,7 @@
 # include "mlx.h"
 # include <math.h>
 # include <stdio.h>
+# include "libft.h"
 
 typedef struct	s_point2{
 	int x;
@@ -22,9 +23,9 @@ typedef struct	s_point2{
 }				t_point2;
 
 typedef struct	s_point3{
-	int x;
-	int y;
-	int z;
+	float x;
+	float y;
+	float z;
 }				t_point3;
 
 typedef struct	s_figure{
@@ -39,7 +40,7 @@ int		abs(int a);
 void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int color);
 
 t_point2 init_p2(int x, int y);
-t_point3 init_p3(int x, int y, int z);
+t_point3 init_p3(float x, float y, float z);
 
 void x_rotate(t_point3 *point, int angle);
 void y_rotate(t_point3 *point, int angle);

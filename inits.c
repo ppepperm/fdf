@@ -21,7 +21,7 @@ t_point2 init_p2(int x, int y)
 	return (tmp);
 }
 
-t_point3 init_p3(int x, int y, int z)
+t_point3 init_p3(float x, float y, float z)
 {
 	t_point3 tmp;
 
