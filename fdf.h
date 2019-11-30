@@ -35,6 +35,15 @@ typedef struct	s_figure{
 
 }				t_figure;
 
+typedef struct	s_fdf{
+	void	*mlx_ptr;
+	void 	*win_ptr;
+	t_point3 **points;
+	t_point2	center;
+	int sx;
+	int sy;
+}				t_fdf;
+
 void	put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color);
 int		abs(int a);
 void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int color);
