@@ -15,7 +15,7 @@ SRC := main.c rotate.c inits.c draw_isometric.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
 CFLAGS := -Wall -Wextra -Werror
 LIB_FLAG := -L libft/ -lft  -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
-LINUX_FLAG := -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lm
+LINUX_FLAG := -L libft/ -lft -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lm
 INCLUDES := .
 
 all: $(NAME)
@@ -30,9 +30,9 @@ $(NAME): $(OBJ)
 		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_FLAG)
 		@echo "DONE"
 
-$LINUX : $(OBJ)
+LINUX : $(OBJ)
 		@make -C libft
-		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LIB_FLAG)
+		@gcc -o $(NAME) $(CFLAGS) $(OBJ) $(LINUX_FLAG)
 		@echo "DONE"
 
 clean:
