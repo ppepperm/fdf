@@ -56,3 +56,21 @@ void rotate_fig(t_point3 *arr,int angle, void f(t_point3*, int), int n)
 		n--;
 	}
 }
+
+void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int))
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(i < fdf.size.y)
+	{
+		j = 0;
+		while(j < fdf.size.x)
+		{
+			f(&(fdf.points[i][j]), angle);
+			j ++;
+		}
+		i++;
+	}
+}

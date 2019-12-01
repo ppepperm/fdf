@@ -30,3 +30,18 @@ t_point3 init_p3(float x, float y, float z)
 	tmp.z = z;
 	return (tmp);
 }
+
+t_point3 **init_table(t_point2 size)
+{
+	int			i;
+	t_point3	**table;
+
+	i = 0;
+	table = (t_point3**)malloc(sizeof(t_point3*) * size.y);
+	while(i < size.y)
+	{
+		table[i] = (t_point3*)malloc(sizeof(t_point3) * size.x);
+		i++;
+	}
+	return (table);
+}
