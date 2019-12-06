@@ -61,7 +61,7 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 		while(nums[size.x])
 		{
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
-			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x])  );
+			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x]) * 2);
 			free(nums[size.x]);
 			size.x++;
 		}
