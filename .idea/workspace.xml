@@ -11,14 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2f7aceb7-8b7f-4a79-9c08-d6e542801c93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/draw_isometric.c" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/draw_isometric.o" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf" beforeDir="false" afterPath="$PROJECT_DIR$/fdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf.h" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inits.c" beforeDir="false" afterPath="$PROJECT_DIR$/inits.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inits.o" beforeDir="false" afterPath="$PROJECT_DIR$/inits.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input" beforeDir="false" afterPath="$PROJECT_DIR$/input" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.c" beforeDir="false" afterPath="$PROJECT_DIR$/input.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input.o" beforeDir="false" afterPath="$PROJECT_DIR$/input.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft/ft_atoi.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_atoi.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_bzero.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libft/ft_isalnum.o" beforeDir="false" afterPath="$PROJECT_DIR$/libft/ft_isalnum.o" afterDir="false" />
@@ -83,7 +83,6 @@
       <change beforePath="$PROJECT_DIR$/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minilibx_macos/libmlx.a" beforeDir="false" afterPath="$PROJECT_DIR$/minilibx_macos/libmlx.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rotate.c" beforeDir="false" afterPath="$PROJECT_DIR$/rotate.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rotate.o" beforeDir="false" afterPath="$PROJECT_DIR$/rotate.o" afterDir="false" />
     </list>
@@ -143,6 +142,13 @@
       <workItem from="1575121625917" duration="218000" />
       <workItem from="1575206603737" duration="1603000" />
       <workItem from="1575210360067" duration="672000" />
+      <workItem from="1575278746673" duration="1559000" />
+      <workItem from="1575355465905" duration="335000" />
+      <workItem from="1575357224272" duration="584000" />
+      <workItem from="1575357856781" duration="566000" />
+      <workItem from="1575359381103" duration="648000" />
+      <workItem from="1575364307423" duration="2576000" />
+      <workItem from="1575450904956" duration="290000" />
     </task>
     <servers />
   </component>

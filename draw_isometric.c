@@ -50,7 +50,7 @@ void put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color)
 
 }
 
-void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int color)
+void put_iso_line(t_fdf fdf, t_point3 st, t_point3 en, int color)
 {
 	t_point2 iso_st;
 	t_point2 iso_en;
@@ -59,14 +59,14 @@ void put_iso_line(void *mlx_ptr, void *win_ptr, t_point3 st, t_point3 en, int co
 	iso_st.y = (st.x + st.y)* sin(0.5235990) - st.z;
 	iso_en.x = (en.x - en.y)* cos(0.5235990);
 	iso_en.y = (en.x + en.y)* sin(0.5235990) - en.z;
-	iso_st.x += 540;
-	iso_st.y += 360;
-	iso_en.x += 540;
-	iso_en.y += 360;
-	put_line(mlx_ptr, win_ptr, iso_st, iso_en, color);
+	iso_st.x += (540 + fdf.offset_x);
+	iso_st.y += (360 + fdf.offset_y);
+	iso_en.x += (540 + fdf.offset_x);
+	iso_en.y += (360 + fdf.offset_y);
+	put_line(fdf.mlx_ptr,fdf.win_ptr, iso_st, iso_en, color);
 }
 
-int	put_iso_fdf(void *mlx_ptr, void *win_ptr, t_fdf fdf, int color)
+int	put_iso_fdf(t_fdf fdf, int color)
 {
 	t_point2 dot;
 
@@ -76,12 +76,11 @@ int	put_iso_fdf(void *mlx_ptr, void *win_ptr, t_fdf fdf, int color)
 		while (dot.x <fdf.size.x)
 		{
 			if (dot.x + 1 < fdf.size.x)
-			{
-				put_iso_line(mlx_ptr, win_ptr, fdf.points[dot.y][dot.x], fdf.points[dot.y][dot.x + 1], color);
-				//printf("%f %f %f\n", fdf.points[dot.x][dot.y].x,  fdf.points[dot.x][dot.y].y,  fdf.points[dot.x][dot.y].z);
-			}
+				put_iso_line(fdf, fdf.points[dot.y][dot.x],\
+				fdf.points[dot.y][dot.x + 1], color);
 			if (dot.y + 1 < fdf.size.y)
-				put_iso_line(mlx_ptr,win_ptr,fdf.points[dot.y][dot.x], fdf.points[dot.y + 1][dot.x], color);
+				put_iso_line(fdf,fdf.points[dot.y][dot.x],\
+				fdf.points[dot.y + 1][dot.x], color);
 			dot.x++;
 		}
 		dot.x = 0;

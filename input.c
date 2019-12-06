@@ -51,14 +51,17 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 	fdf->size = size;
 	fd = open(filename, O_RDWR);
 	fdf->points = init_table(size);
-	fdf->center = init_p2((size.x - 1) * 10, (size.y - 1) * 10);
+	fdf->center = init_p2((size.x - 1) * 5, (size.y - 1) * 5);
+	fdf->offset_x = 0;
+	fdf->offset_y = 0;
 	size = init_p2(0,0);
 	while (get_next_line(fd, &line))
 	{
 		nums = ft_strsplit(line, ' ');
 		while(nums[size.x])
 		{
-			fdf->points[size.y][size.x] = init_p3(size.x * 20 - fdf->center.x, size.y * 20  - fdf->center.y, ft_atoi(nums[size.x]) * 5);
+			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
+			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x])  );
 			free(nums[size.x]);
 			size.x++;
 		}

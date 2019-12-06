@@ -74,3 +74,23 @@ void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int))
 		i++;
 	}
 }
+
+void	mult_fdf(t_fdf fdf, float mult)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(i < fdf.size.y)
+	{
+		j = 0;
+		while(j < fdf.size.x)
+		{
+			fdf.points[i][j].x *= mult;
+			fdf.points[i][j].y *= mult;
+			fdf.points[i][j].z *= mult;
+			j ++;
+		}
+		i++;
+	}
+}

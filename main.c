@@ -22,35 +22,72 @@ int	deal_key(int key, void *param)
 	if (key == 12 || key == 1738) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, 5, z_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 14 || key == 1749) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, -5, z_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 1 || key == 1731) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, 5, x_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 13 || key == 1753) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, -5, x_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 0 || key == 1734) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, 5, y_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 2 || key == 1751) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
 		rotate_fdf(*fdf, -5, y_rotate);
-		put_iso_fdf(fdf->mlx_ptr, fdf->win_ptr, *fdf, 255 * 256);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key ==1739)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		mult_fdf(*fdf, 1.1);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key == 1729)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		mult_fdf(*fdf, 0.9);
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key == 65362)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		fdf->offset_y -=10;
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key == 65364)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		fdf->offset_y +=10;
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key == 65361)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		fdf->offset_x -=10;
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
+	}
+	if (key == 65363)
+	{
+		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+		fdf->offset_x +=10;
+		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 53 || key == 65307)
 		exit (0);
+	//ft_putnbr(key);
 	return 0;
 }
 
@@ -72,7 +109,7 @@ int main(int ac, char **av)
 	win_ptr = mlx_new_window(mlx_ptr, 1080, 720, "fdf 21");
 	fdf.mlx_ptr = mlx_ptr;
 	fdf.win_ptr = win_ptr;
-	put_iso_fdf(mlx_ptr,win_ptr,fdf,255 * 256);
+	put_iso_fdf(fdf,255 * 256 * 256 + 255 *256 );
 	mlx_hook(win_ptr,2,  1L<<0 ,deal_key, (void*)(&fdf));
 	mlx_loop(mlx_ptr);
 }
