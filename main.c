@@ -86,9 +86,20 @@ int	deal_key(int key, void *param)
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 53 || key == 65307)
-		exit (0);
+	{
+		free_fdf(*fdf);
+		exit(0);
+	}
 	//ft_putnbr(key);
 	return 0;
+}
+
+int cls(void *param)
+{
+	t_fdf *fdf;
+	fdf = (t_fdf*)param;
+	free_fdf(*fdf);
+	exit(0);
 }
 
 int main(int ac, char **av)
@@ -111,6 +122,7 @@ int main(int ac, char **av)
 	fdf.win_ptr = win_ptr;
 	put_iso_fdf(fdf,255 * 256 * 256 + 255 *256 );
 	mlx_hook(win_ptr,2,  1L<<0 ,deal_key, (void*)(&fdf));
+	mlx_hook(win_ptr, 17,0L,cls,(void*)(&fdf));
 	mlx_loop(mlx_ptr);
 }
 

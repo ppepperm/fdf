@@ -47,22 +47,15 @@ void z_rotate(t_point3 *point, int angle)
 	point->y = save.y * cos(rad) + save.x * sin(rad);
 }
 
-void rotate_fig(t_point3 *arr,int angle, void f(t_point3*, int), int n)
-{
-	while(n)
-	{
-		f(arr, angle);
-		arr++;
-		n--;
-	}
-}
-
 void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int))
 {
 	int i;
 	int j;
 
 	i = 0;
+	f(&(fdf.self_sys[0]), angle);
+	f(&(fdf.self_sys[1]), angle);
+	f(&(fdf.self_sys[2]), angle);
 	while(i < fdf.size.y)
 	{
 		j = 0;

@@ -44,6 +44,7 @@ typedef struct	s_fdf{
 	t_point2	size;
 	int 		offset_x;
 	int 		offset_y;
+	t_point3	self_sys[3];
 }				t_fdf;
 
 void	put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color);
@@ -54,15 +55,17 @@ int		put_iso_fdf(t_fdf fdf, int color);
 t_point2 init_p2(int x, int y);
 t_point3 init_p3(float x, float y, float z);
 t_point3 **init_table(t_point2 size);
+int 	free_fdf(t_fdf fdf);
 
 void x_rotate(t_point3 *point, int angle);
 void y_rotate(t_point3 *point, int angle);
 void z_rotate(t_point3 *point, int angle);
-void rotate_fig(t_point3 *arr,int angle, void f(t_point3*, int), int n);
 void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int));
 void	mult_fdf(t_fdf fdf, float mult);
 
 int	get_size(char *filename, t_point2 *size);
 int	get_fdf(char *filename, t_point2 size, t_fdf *fdf);
+
+void increase_z(t_fdf fdf);
 
 #endif

@@ -52,6 +52,9 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 	fd = open(filename, O_RDWR);
 	fdf->points = init_table(size);
 	fdf->center = init_p2((size.x - 1) * 5, (size.y - 1) * 5);
+	fdf->self_sys[0] = init_p3(1,0,0);
+	fdf->self_sys[1] = init_p3(0,1,0);
+	fdf->self_sys[2] = init_p3(0,0,1);
 	fdf->offset_x = 0;
 	fdf->offset_y = 0;
 	size = init_p2(0,0);

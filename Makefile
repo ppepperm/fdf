@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME= fdf
-SRC := main.c rotate.c inits.c draw_isometric.c input.c
+SRC := main.c rotate.c inits.c draw_isometric.c input.c conversions.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
 CFLAGS := -Wall -Wextra -Werror
 LIB_FLAG := -L libft/ -lft  -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
