@@ -56,6 +56,9 @@ void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int))
 	f(&(fdf.self_sys[0]), angle);
 	f(&(fdf.self_sys[1]), angle);
 	f(&(fdf.self_sys[2]), angle);
+	printf("%f %f %f\n", fdf.self_sys[0].x,fdf.self_sys[0].y,fdf.self_sys[0].z);
+	printf("%f %f %f\n", fdf.self_sys[1].x,fdf.self_sys[1].y,fdf.self_sys[1].z);
+	printf("%f %f %f\n", fdf.self_sys[2].x,fdf.self_sys[2].y,fdf.self_sys[2].z);
 	while(i < fdf.size.y)
 	{
 		j = 0;

@@ -38,4 +38,22 @@ void	normalize(t_qatern *base)
 	inverse->k = -base->k/abs;
 }
 
-void
+void	do_rotor(t_qatern *base, float angle)
+{
+	angle = angle * 0.0174533;
+	base->s *= sin(angle);
+	inverse->i *= cos(angle);
+	inverse->j *= cos(angle);
+	inverse->k *= cos(angle);
+}
+
+t_qatern multiply(t_qatern p, t_qatern q)
+{
+	t_qatern result;
+
+	result.s = p.s * q.s - (p.i*q.i + p.j*q.j + p.k*q.k);
+	result.i = p.s*q.i + q.s*p.i + p.j*q.k - p.k*q.j;
+	result.j = p.s*q.j + q.s*p.j + p.k*q.i - p.i*q.k;
+	result.i = p.s*q.k + q.s*p.k + p.j*q.k - p.k*q.j;
+	return (result);
+}
