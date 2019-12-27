@@ -11,19 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="2f7aceb7-8b7f-4a79-9c08-d6e542801c93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_isometric.c" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draw_isometric.o" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf" beforeDir="false" afterPath="$PROJECT_DIR$/fdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf.h" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inits.c" beforeDir="false" afterPath="$PROJECT_DIR$/inits.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inits.o" beforeDir="false" afterPath="$PROJECT_DIR$/inits.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input" beforeDir="false" afterPath="$PROJECT_DIR$/input" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.c" beforeDir="false" afterPath="$PROJECT_DIR$/input.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.o" beforeDir="false" afterPath="$PROJECT_DIR$/input.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rotate.c" beforeDir="false" afterPath="$PROJECT_DIR$/rotate.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rotate.o" beforeDir="false" afterPath="$PROJECT_DIR$/rotate.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +86,10 @@
       <workItem from="1575450904956" duration="290000" />
       <workItem from="1575725477829" duration="70000" />
       <workItem from="1575725550032" duration="14000" />
-      <workItem from="1575892151997" duration="8125000" />
+      <workItem from="1575892151997" duration="8316000" />
+      <workItem from="1575909554296" duration="506000" />
+      <workItem from="1576069742940" duration="932000" />
+      <workItem from="1577458472489" duration="1888000" />
     </task>
     <servers />
   </component>

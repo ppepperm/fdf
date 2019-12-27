@@ -18,18 +18,29 @@
 # include "libft.h"
 # include <fcntl.h>
 
-typedef struct	s_point2{
+typedef struct	s_point2
+{
 	int			x;
 	int			y;
 }				t_point2;
 
-typedef struct	s_point3{
+typedef struct	s_point3
+{
 	float		x;
 	float		y;
 	float		z;
 }				t_point3;
 
-typedef struct	s_figure{
+typedef struct	s_qatern
+{
+	float	s;
+	float 	i;
+	float 	j;
+	float 	k;
+}				t_qatern;
+
+typedef struct	s_figure
+{
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_point3	*points;

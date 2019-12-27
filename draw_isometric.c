@@ -13,29 +13,18 @@
 #include "fdf.h"
 #include <stdio.h>
 
-int get_color_inc(t_point2 st, t_point2 en, int base)
-{
-	int delta = 4194303 - base;
-	int inc;
-	inc = delta/abs(en.x - st.y);
-	return (inc);
-}
-
 void put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color) {
 	const int deltaX = abs(en.x - st.x);
 	const int deltaY = abs(en.y - st.y);
 	const int signX = st.x < en.x ? 1 : -1;
 	const int signY = st.y < en.y ? 1 : -1;
 	int error = deltaX - deltaY;
-	//int inc;
 
-	//inc = get_color_inc(st, en, color);
 	mlx_pixel_put(mlx_ptr, win_ptr, en.x, en.y, color);
 	while(st.x != en.x || st.y != en.y)
 	{
 		mlx_pixel_put(mlx_ptr, win_ptr, st.x, st.y, color);
 		const int error2 = error * 2;
-		//
 		if(error2 > -deltaY)
 		{
 			error -= deltaY;
