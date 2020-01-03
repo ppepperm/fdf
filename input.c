@@ -14,9 +14,22 @@
 #include "fdf.h"
 #include "libft.h"
 
+
+int check_line(char *line)
+{
+	while (*line)
+	{
+		if (*line > '9' || *line < '0')
+			return (0);
+		line++;
+	}
+	return (1);
+}
+
 int	get_size(char *filename, t_point2 *size)
 {
 	int		fd;
+	int		x;
 	char	*line;
 	char 	**nums;
 
@@ -33,10 +46,21 @@ int	get_size(char *filename, t_point2 *size)
 		size->x++;
 	}
 	free(nums);
+	free(line);
 	while(get_next_line(fd, &line))
 	{
+		x = 0;
 		size->y++;
+		nums = ft_strsplit(line, ' ');
+		while(nums[x])
+		{
+			free(nums[x]);
+			x++;
+		}
 		free(line);
+		free(nums);
+		if (x != size->x)
+			return (0);
 	}
 	close(fd);
 	return (1);
@@ -63,6 +87,17 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 		nums = ft_strsplit(line, ' ');
 		while(nums[size.x])
 		{
+			if (!check_line(nums[size.x]))
+			{
+				while(nums[size.x])
+				{
+					free(nums[size.x]);
+					size.x++;
+				}
+				free(nums);
+				free(line);
+				return (0);
+			}
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
 			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x]) * 2);
 			free(nums[size.x]);

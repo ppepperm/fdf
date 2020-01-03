@@ -68,15 +68,19 @@ t_point3 init_p3(float x, float y, float z);
 t_point3 **init_table(t_point2 size);
 int 	free_fdf(t_fdf fdf);
 
-void x_rotate(t_point3 *point, int angle);
-void y_rotate(t_point3 *point, int angle);
-void z_rotate(t_point3 *point, int angle);
-void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, int));
+void x_rotate(t_point3 *point, float angle,  t_fdf fdf);
+void y_rotate(t_point3 *point, float angle,  t_fdf fdf);
+void z_rotate(t_point3 *point, float angle,  t_fdf fdf);
+void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, float , t_fdf));
 void	mult_fdf(t_fdf fdf, float mult);
 
 int	get_size(char *filename, t_point2 *size);
 int	get_fdf(char *filename, t_point2 size, t_fdf *fdf);
 
-void increase_z(t_fdf fdf);
+t_qatern init_qatern(float s, float i, float j, float k);
+void	normalize(t_point3 *vec);
+t_qatern init_rotor(t_point3 axis, float angle);
+t_qatern inverse(t_qatern base);
+t_qatern multiply(t_qatern q, t_qatern p);
 
 #endif

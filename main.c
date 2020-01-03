@@ -21,32 +21,44 @@ int	deal_key(int key, void *param)
 	fdf = (t_fdf*)param;
 	if (key == 12 || key == 1738) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 10, z_rotate);
+		rotate_fdf(*fdf, 5, z_rotate);
+		z_rotate(&(fdf->self_sys[0]), 5, *fdf);
+		z_rotate(&(fdf->self_sys[1]), 5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 14 || key == 1749) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -10, z_rotate);
+		rotate_fdf(*fdf, -5, z_rotate);
+		z_rotate(&(fdf->self_sys[0]), -5, *fdf);
+		z_rotate(&(fdf->self_sys[1]), -5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 1 || key == 1731) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 10, x_rotate);
+		rotate_fdf(*fdf, 5, x_rotate);
+		x_rotate(&(fdf->self_sys[1]), 5, *fdf);
+		x_rotate(&(fdf->self_sys[2]), 5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 13 || key == 1753) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -10, x_rotate);
+		rotate_fdf(*fdf, -5, x_rotate);
+		x_rotate(&(fdf->self_sys[1]), -5, *fdf);
+		x_rotate(&(fdf->self_sys[2]), -5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 0 || key == 1734) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 10, y_rotate);
+		rotate_fdf(*fdf, 5, y_rotate);
+		y_rotate(&(fdf->self_sys[0]), 5, *fdf);
+		y_rotate(&(fdf->self_sys[2]), 5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key == 2 || key == 1751) {
 		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -10, y_rotate);
+		rotate_fdf(*fdf, -5, y_rotate);
+		y_rotate(&(fdf->self_sys[0]), -5, *fdf);
+		y_rotate(&(fdf->self_sys[2]), -5, *fdf);
 		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
 	}
 	if (key ==1739 || key == 15)
@@ -112,9 +124,12 @@ int main(int ac, char **av)
 	size = init_p2(0,0);
 	if (ac)
 	{
-		get_size(av[1], &size);
+		if (!get_size(av[1], &size))
+			return 0;
 		printf("%d %d\n", size.x, size.y);
-		get_fdf(av[1], size, &fdf);
+		if (!get_fdf(av[1], size, &fdf))
+			return (0);
+		printf("got_fdf\n");
 	}
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1080, 720, "fdf 21");

@@ -13,47 +13,57 @@
 
 #include "fdf.h"
 
+t_qatern init_qatern(float s, float i, float j, float k)
+{
+	t_qatern tmp;
+	tmp.s = s;
+	tmp.i = i;
+	tmp.j = j;
+	tmp.k = k;
+	return tmp;
+}
+
+void	normalize(t_point3 *vec)
+{
+	float abs;
+
+	abs = sqrt(vec->x*vec->x + vec->y*vec->y + vec->z*vec->z);
+	vec->x /= abs;
+	vec->y /= abs;
+	vec->z /= abs;
+}
+
+t_qatern init_rotor(t_point3 axis, float angle)
+{
+	t_qatern rotor;
+
+	angle = angle * 0.0174533;
+	normalize(&axis);
+	rotor.s = cos(angle);
+	rotor.i = axis.x * sin(angle);
+	rotor.j = axis.y * sin(angle);
+	rotor.k = axis.z * sin(angle);
+	return (rotor);
+}
+
 t_qatern inverse(t_qatern base)
 {
-	float abs;
 	t_qatern inverse;
 
-	abs = base.s * base.s + base.i * base.i + base.j * base.j + base.k * base.k;
-	inverse.s = base.s/abs;
-	inverse.i = -base.i/abs;
-	inverse.j = -base.j/abs;
-	inverse.k = -base.k/abs;
-	return inverse;
+	inverse.s = base.s;
+	inverse.i = -base.i;
+	inverse.j = -base.j;
+	inverse.k = -base.k;
+	return (inverse);
 }
 
-void	normalize(t_qatern *base)
-{
-	float abs;
-	t_qatern inverse;
-
-	abs = sqtr(base->s * base->s + base->i * base->i + base->j * base->j + base->k * base->k);
-	base->s = base->s/abs;
-	inverse->i = -base->i/abs;
-	inverse->j = -base->j/abs;
-	inverse->k = -base->k/abs;
-}
-
-void	do_rotor(t_qatern *base, float angle)
-{
-	angle = angle * 0.0174533;
-	base->s *= sin(angle);
-	inverse->i *= cos(angle);
-	inverse->j *= cos(angle);
-	inverse->k *= cos(angle);
-}
-
-t_qatern multiply(t_qatern p, t_qatern q)
+t_qatern multiply(t_qatern q, t_qatern p)
 {
 	t_qatern result;
 
-	result.s = p.s * q.s - (p.i*q.i + p.j*q.j + p.k*q.k);
-	result.i = p.s*q.i + q.s*p.i + p.j*q.k - p.k*q.j;
-	result.j = p.s*q.j + q.s*p.j + p.k*q.i - p.i*q.k;
-	result.i = p.s*q.k + q.s*p.k + p.j*q.k - p.k*q.j;
-	return (result);
+	result.s = q.s * p.s -q.i * p.i - q.j * p.j - q.k * p.k;
+	result.i = q.s * p.i + q.i * p.s + q.j * p.k - q.k * p.j;
+	result.j = q.s * p.j + q.j * p.s - q.i * p.k + q.k * p.i;
+	result.k = q.s * p.k + q.k * p.s + q.i * p.j - q.j * p.i;
+	return result;
 }
