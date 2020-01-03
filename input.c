@@ -19,8 +19,10 @@ int check_line(char *line)
 {
 	while (*line)
 	{
-		if (*line > '9' || *line < '0')
+		if ((*line > '9' || *line < '0') && *line != '-'){
+			ft_putstr(line);
 			return (0);
+		}
 		line++;
 	}
 	return (1);
