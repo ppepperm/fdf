@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/fdf.h"
 
-#include "fdf.h"
-
-t_qatern init_qatern(float s, float i, float j, float k)
+t_qatern	init_qatern(float s, float i, float j, float k)
 {
 	t_qatern tmp;
+
 	tmp.s = s;
 	tmp.i = i;
 	tmp.j = j;
 	tmp.k = k;
-	return tmp;
+	return (tmp);
 }
 
-void	normalize(t_point3 *vec)
+void		normalize(t_point3 *vec)
 {
 	float abs;
 
-	abs = sqrt(vec->x*vec->x + vec->y*vec->y + vec->z*vec->z);
+	abs = sqrt(vec->x * vec->x + vec->y * vec->y + vec->z * vec->z);
 	vec->x /= abs;
 	vec->y /= abs;
 	vec->z /= abs;
 }
 
-t_qatern init_rotor(t_point3 axis, float angle)
+t_qatern	init_rotor(t_point3 axis, float angle)
 {
 	t_qatern rotor;
 
@@ -46,7 +46,7 @@ t_qatern init_rotor(t_point3 axis, float angle)
 	return (rotor);
 }
 
-t_qatern inverse(t_qatern base)
+t_qatern	inverse(t_qatern base)
 {
 	t_qatern inverse;
 
@@ -57,13 +57,13 @@ t_qatern inverse(t_qatern base)
 	return (inverse);
 }
 
-t_qatern multiply(t_qatern q, t_qatern p)
+t_qatern	multiply(t_qatern q, t_qatern p)
 {
 	t_qatern result;
 
-	result.s = q.s * p.s -q.i * p.i - q.j * p.j - q.k * p.k;
+	result.s = q.s * p.s - q.i * p.i - q.j * p.j - q.k * p.k;
 	result.i = q.s * p.i + q.i * p.s + q.j * p.k - q.k * p.j;
 	result.j = q.s * p.j + q.j * p.s - q.i * p.k + q.k * p.i;
 	result.k = q.s * p.k + q.k * p.s + q.i * p.j - q.j * p.i;
-	return result;
+	return (result);
 }

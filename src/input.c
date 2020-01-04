@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                             :+:      :+:    :+:  */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 14:01:48 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/11/13 14:01:50 by ppepperm         ###   ########.fr       */
+/*   Created: 2020/01/04 16:20:04 by ppepperm          #+#    #+#             */
+/*   Updated: 2020/01/04 16:20:11 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
+#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
-int check_line(char *line)
+int		check_line(char *line)
 {
 	while (*line)
 	{
@@ -25,32 +25,17 @@ int check_line(char *line)
 	return (1);
 }
 
-int	get_size(char *filename, t_point2 *size)
+int		go_through_file(int fd, char *line, t_point2 *size)
 {
-	int		fd;
 	int		x;
-	char	*line;
-	char 	**nums;
+	char	**nums;
 
-	if ((fd = open(filename, O_RDWR)) < 0)
-		return (0);
-	if (!get_next_line(fd, &line))
-		return (0);
-	*size = init_p2(0, 1);
-	nums = ft_strsplit(line, ' ');
-	while(nums[size->x])
-	{
-		free(nums[size->x]);
-		size->x++;
-	}
-	free(nums);
-	free(line);
-	while(get_next_line(fd, &line))
+	while (get_next_line(fd, &line))
 	{
 		x = 0;
 		size->y++;
 		nums = ft_strsplit(line, ' ');
-		while(nums[x])
+		while (nums[x])
 		{
 			free(nums[x]);
 			x++;
@@ -58,17 +43,45 @@ int	get_size(char *filename, t_point2 *size)
 		free(line);
 		free(nums);
 		if (x != size->x)
+		{
+			close(fd);
 			return (0);
+		}
 	}
+	return (1);
+}
+
+int		get_size(char *filename, t_point2 *size)
+{
+	int		fd;
+	char	*line;
+	char	**nums;
+
+	if ((fd = open(filename, O_RDWR)) < 0)
+		return (0);
+	if (!get_next_line(fd, &line))
+		return (0);
+	*size = init_p2(0, 1);
+	nums = ft_strsplit(line, ' ');
+	while (nums[size->x])
+	{
+		free(nums[size->x]);
+		size->x++;
+	}
+	free(nums);
+	free(line);
+	if (!go_through_file(fd, line, size))
+		return (0);
 	close(fd);
 	return (1);
 }
 
-int symbol_check(t_fdf *fdf, char **nums, int x, char *line)
+int		symbol_check(t_fdf *fdf, char **nums, int x, char *line)
 {
 	if (!check_line(nums[x]))
 	{
-		while (nums[x]) {
+		while (nums[x])
+		{
 			free(nums[x]);
 			x++;
 		}
@@ -82,7 +95,7 @@ int symbol_check(t_fdf *fdf, char **nums, int x, char *line)
 	return (1);
 }
 
-int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
+int		get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 {
 	int			fd;
 	char		*line;
@@ -90,16 +103,16 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 
 	fd = open(filename, O_RDWR);
 	init_fdf(fdf, size);
-	size = init_p2(0,0);
+	size = init_p2(0, 0);
 	while (get_next_line(fd, &line))
 	{
 		nums = ft_strsplit(line, ' ');
-		while(nums[size.x])
+		while (nums[size.x])
 		{
-			if (!symbol_check(fdf,nums, size.x, line))
+			if (!symbol_check(fdf, nums, size.x, line))
 				return (0);
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
-			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x]) * 2);
+			size.y * 10 - fdf->center.y, ft_atoi(nums[size.x]) * 2);
 			free(nums[size.x++]);
 		}
 		free(nums);

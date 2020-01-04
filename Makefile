@@ -11,16 +11,16 @@
 # **************************************************************************** #
 
 NAME= fdf
-SRC := main.c rotate.c inits.c draw_isometric.c input.c qaternion.c hook_func.c
+SRC := src/main.c src/rotate.c src/inits.c src/draw_isometric.c src/input.c src/qaternion.c src/hook_func.c
 OBJ := $(patsubst %.c, %.o, $(SRC))
 CFLAGS := -Wall -Wextra -Werror
 LIB_FLAG := -L libft/ -lft  -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 LINUX_FLAG := -L libft/ -lft -L/usr/X11/lib /usr/X11/lib/libmlx.a -lXext -lX11 -lm
-INCLUDES := .
+INCLUDES := /includes
 
 all: $(NAME)
 
-%.o : src/%.c $(INCLUDES)fillit.h
+%.o : src/%.c $(INCLUDES)
 		@gcc -c $(CFLAGS) -I $(INCLUDES) $< -o $@
 		@echo $(patsubst src/%.c, %, $<)
 

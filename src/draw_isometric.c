@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 #include <stdio.h>
 
 t_point2	init_sign(t_point2 st, t_point2 en)

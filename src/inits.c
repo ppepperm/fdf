@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
-t_point2 init_p2(int x, int y)
+t_point2	init_p2(int x, int y)
 {
 	t_point2 tmp;
 
@@ -21,7 +21,7 @@ t_point2 init_p2(int x, int y)
 	return (tmp);
 }
 
-t_point3 init_p3(float x, float y, float z)
+t_point3	init_p3(float x, float y, float z)
 {
 	t_point3 tmp;
 
@@ -31,14 +31,14 @@ t_point3 init_p3(float x, float y, float z)
 	return (tmp);
 }
 
-t_point3 **init_table(t_point2 size)
+t_point3	**init_table(t_point2 size)
 {
 	int			i;
 	t_point3	**table;
 
 	i = 0;
 	table = (t_point3**)malloc(sizeof(t_point3*) * size.y);
-	while(i < size.y)
+	while (i < size.y)
 	{
 		table[i] = (t_point3*)malloc(sizeof(t_point3) * size.x);
 		i++;
@@ -46,24 +46,24 @@ t_point3 **init_table(t_point2 size)
 	return (table);
 }
 
-int 	free_fdf(t_fdf fdf)
+int			free_fdf(t_fdf fdf)
 {
 	free(fdf.win_ptr);
 	free(fdf.mlx_ptr);
-	while(fdf.size.y)
+	while (fdf.size.y)
 		free(fdf.points[--fdf.size.y]);
 	free(fdf.points);
 	return (1);
 }
 
-void init_fdf(t_fdf *fdf, t_point2 size)
+void		init_fdf(t_fdf *fdf, t_point2 size)
 {
 	fdf->size = size;
 	fdf->points = init_table(size);
 	fdf->center = init_p2((size.x - 1) * 5, (size.y - 1) * 5);
-	fdf->self_sys[0] = init_p3(1,0,0);
-	fdf->self_sys[1] = init_p3(0,1,0);
-	fdf->self_sys[2] = init_p3(0,0,1);
+	fdf->self_sys[0] = init_p3(1, 0, 0);
+	fdf->self_sys[1] = init_p3(0, 1, 0);
+	fdf->self_sys[2] = init_p3(0, 0, 1);
 	fdf->iso = 0;
 	fdf->offset_x = 0;
 	fdf->offset_y = 0;

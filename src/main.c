@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "fdf.h"
-#include "libft.h"
+#include "../includes/fdf.h"
+#include "../includes/libft.h"
 
 int	deal_key(int key, void *param)
 {

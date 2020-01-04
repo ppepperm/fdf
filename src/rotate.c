@@ -10,98 +10,65 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 #include <math.h>
 #include <stdio.h>
 
-/*void x_rotate(t_point3 *point, int angle)
-{
-	float rad;
-	t_point3 save;
-
-	save = init_p3(point->x, point->y, point->z);
-	rad = angle * 0.0174533;
-	point->y = save.y * cos(rad) + save.z * sin(rad);
-	point->z = save.z * cos(rad) - save.y * sin(rad);
-}
-
-void y_rotate(t_point3 *point, int angle)
-{
-	float rad;
-	t_point3 save;
-
-	save = init_p3(point->x, point->y, point->z);
-	rad = angle * 0.0174533;
-	point->x = save.x * cos(rad) + save.z * sin(rad);
-	point->z = save.z * cos(rad) - save.x * sin(rad);
-}
-
-void z_rotate(t_point3 *point, int angle)
-{
-	float rad;
-	t_point3 save;
-
-	save = init_p3(point->x, point->y, point->z);
-	rad = angle * 0.0174533;
-	point->x = save.x * cos(rad) - save.y * sin(rad);
-	point->y = save.y * cos(rad) + save.x * sin(rad);
-}*/
-
-void x_rotate(t_point3 *point, float angle, t_fdf fdf)
+void	x_rotate(t_point3 *point, float angle, t_fdf fdf)
 {
 	t_qatern dot;
 	t_qatern rotor;
 
-	rotor = init_rotor(fdf.self_sys[0], angle/2);
-	dot = init_qatern(0,point->x, point->y, point->z);
-	dot = multiply(rotor,dot);
+	rotor = init_rotor(fdf.self_sys[0], angle / 2);
+	dot = init_qatern(0, point->x, point->y, point->z);
+	dot = multiply(rotor, dot);
 	dot = multiply(dot, inverse(rotor));
 	point->x = dot.i;
 	point->y = dot.j;
 	point->z = dot.k;
 }
 
-void y_rotate(t_point3 *point, float angle, t_fdf fdf)
+void	y_rotate(t_point3 *point, float angle, t_fdf fdf)
 {
 	t_qatern dot;
 	t_qatern rotor;
 
-	rotor = init_rotor(fdf.self_sys[1], angle/2);
-	dot = init_qatern(0,point->x, point->y, point->z);
-	dot = multiply(rotor,dot);
+	rotor = init_rotor(fdf.self_sys[1], angle / 2);
+	dot = init_qatern(0, point->x, point->y, point->z);
+	dot = multiply(rotor, dot);
 	dot = multiply(dot, inverse(rotor));
 	point->x = dot.i;
 	point->y = dot.j;
 	point->z = dot.k;
 }
 
-void z_rotate(t_point3 *point, float angle, t_fdf fdf)
+void	z_rotate(t_point3 *point, float angle, t_fdf fdf)
 {
 	t_qatern dot;
 	t_qatern rotor;
 
-	rotor = init_rotor(fdf.self_sys[2], angle/2);
-	dot = init_qatern(0,point->x, point->y, point->z);
-	dot = multiply(rotor,dot);
+	rotor = init_rotor(fdf.self_sys[2], angle / 2);
+	dot = init_qatern(0, point->x, point->y, point->z);
+	dot = multiply(rotor, dot);
 	dot = multiply(dot, inverse(rotor));
 	point->x = dot.i;
 	point->y = dot.j;
 	point->z = dot.k;
 }
 
-void rotate_fdf(t_fdf fdf,int angle, void f(t_point3*, float, t_fdf))
+void	rotate_fdf(t_fdf fdf, int angle, void f(t_point3*, float, t_fdf))
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(i < fdf.size.y)
+	while (i < fdf.size.y)
 	{
 		j = 0;
-		while(j < fdf.size.x)
+		while (j < fdf.size.x)
 		{
 			f(&(fdf.points[i][j]), angle, fdf);
-			j ++;
+			j++;
 		}
 		i++;
 	}
@@ -113,15 +80,15 @@ void	mult_fdf(t_fdf fdf, float mult)
 	int j;
 
 	i = 0;
-	while(i < fdf.size.y)
+	while (i < fdf.size.y)
 	{
 		j = 0;
-		while(j < fdf.size.x)
+		while (j < fdf.size.x)
 		{
 			fdf.points[i][j].x *= mult;
 			fdf.points[i][j].y *= mult;
 			fdf.points[i][j].z *= mult;
-			j ++;
+			j++;
 		}
 		i++;
 	}
