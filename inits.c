@@ -55,3 +55,16 @@ int 	free_fdf(t_fdf fdf)
 	free(fdf.points);
 	return (1);
 }
+
+void init_fdf(t_fdf *fdf, t_point2 size)
+{
+	fdf->size = size;
+	fdf->points = init_table(size);
+	fdf->center = init_p2((size.x - 1) * 5, (size.y - 1) * 5);
+	fdf->self_sys[0] = init_p3(1,0,0);
+	fdf->self_sys[1] = init_p3(0,1,0);
+	fdf->self_sys[2] = init_p3(0,0,1);
+	fdf->iso = 0;
+	fdf->offset_x = 0;
+	fdf->offset_y = 0;
+}

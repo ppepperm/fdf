@@ -39,14 +39,6 @@ typedef struct	s_qatern
 	float 	k;
 }				t_qatern;
 
-typedef struct	s_figure
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_point3	*points;
-
-}				t_figure;
-
 typedef struct	s_fdf{
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -70,6 +62,7 @@ t_point2 init_p2(int x, int y);
 t_point3 init_p3(float x, float y, float z);
 t_point3 **init_table(t_point2 size);
 int 	free_fdf(t_fdf fdf);
+void init_fdf(t_fdf *fdf, t_point2 size);
 
 void x_rotate(t_point3 *point, float angle,  t_fdf fdf);
 void y_rotate(t_point3 *point, float angle,  t_fdf fdf);

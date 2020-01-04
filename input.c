@@ -88,16 +88,8 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 	char		*line;
 	char		**nums;
 
-	fdf->size = size;
 	fd = open(filename, O_RDWR);
-	fdf->points = init_table(size);
-	fdf->center = init_p2((size.x - 1) * 5, (size.y - 1) * 5);
-	fdf->self_sys[0] = init_p3(1,0,0);
-	fdf->self_sys[1] = init_p3(0,1,0);
-	fdf->self_sys[2] = init_p3(0,0,1);
-	fdf->iso = 0;
-	fdf->offset_x = 0;
-	fdf->offset_y = 0;
+	init_fdf(fdf, size);
 	size = init_p2(0,0);
 	while (get_next_line(fd, &line))
 	{
@@ -108,8 +100,7 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 				return (0);
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
 			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x]) * 2);
-			free(nums[size.x]);
-			size.x++;
+			free(nums[size.x++]);
 		}
 		free(nums);
 		free(line);
