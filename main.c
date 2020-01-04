@@ -19,90 +19,15 @@ int	deal_key(int key, void *param)
 	t_fdf *fdf;
 
 	fdf = (t_fdf*)param;
-	if (key == 12 || key == 1738) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 5, z_rotate);
-		z_rotate(&(fdf->self_sys[0]), 5, *fdf);
-		z_rotate(&(fdf->self_sys[1]), 5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 14 || key == 1749) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -5, z_rotate);
-		z_rotate(&(fdf->self_sys[0]), -5, *fdf);
-		z_rotate(&(fdf->self_sys[1]), -5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 1 || key == 1731) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 5, x_rotate);
-		x_rotate(&(fdf->self_sys[1]), 5, *fdf);
-		x_rotate(&(fdf->self_sys[2]), 5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 13 || key == 1753) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -5, x_rotate);
-		x_rotate(&(fdf->self_sys[1]), -5, *fdf);
-		x_rotate(&(fdf->self_sys[2]), -5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 0 || key == 1734) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, 5, y_rotate);
-		y_rotate(&(fdf->self_sys[0]), 5, *fdf);
-		y_rotate(&(fdf->self_sys[2]), 5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 2 || key == 1751) {
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		rotate_fdf(*fdf, -5, y_rotate);
-		y_rotate(&(fdf->self_sys[0]), -5, *fdf);
-		y_rotate(&(fdf->self_sys[2]), -5, *fdf);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key ==1739 || key == 15)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		mult_fdf(*fdf, 1.1);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 1729 || key == 3)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		mult_fdf(*fdf, 0.9);
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 65362 || key == 126)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		fdf->offset_y -=10;
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 65364 || key == 125)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		fdf->offset_y +=10;
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 65361 || key == 123)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		fdf->offset_x -=10;
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
-	if (key == 65363 || key == 124)
-	{
-		mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
-		fdf->offset_x +=10;
-		put_iso_fdf(*fdf, 255 * 256 * 256 + 256*255);
-	}
+	rotate(fdf, key);
+	size_change(fdf, key);
+	move(fdf,key);
+	projection_change(fdf, key);
 	if (key == 53 || key == 65307)
 	{
 		free_fdf(*fdf);
 		exit(0);
 	}
-	//ft_putnbr(key);
 	return 0;
 }
 
@@ -125,7 +50,7 @@ int main(int ac, char **av)
 	if (ac)
 	{
 		if (!get_size(av[1], &size))
-			return 0;
+			return (0);
 		printf("%d %d\n", size.x, size.y);
 		if (!get_fdf(av[1], size, &fdf))
 			return (0);

@@ -20,7 +20,7 @@ int check_line(char *line)
 	while (*line)
 	{
 		if ((*line > '9' || *line < '0') && *line != '-'){
-			ft_putstr(line);
+			//ft_putstr(line);
 			return (0);
 		}
 		line++;
@@ -81,6 +81,7 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 	fdf->self_sys[0] = init_p3(1,0,0);
 	fdf->self_sys[1] = init_p3(0,1,0);
 	fdf->self_sys[2] = init_p3(0,0,1);
+	fdf->iso = 0;
 	fdf->offset_x = 0;
 	fdf->offset_y = 0;
 	size = init_p2(0,0);
@@ -98,6 +99,9 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 				}
 				free(nums);
 				free(line);
+				while(fdf->size.y)
+					free(fdf->points[--fdf->size.y]);
+				free(fdf->points);
 				return (0);
 			}
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\

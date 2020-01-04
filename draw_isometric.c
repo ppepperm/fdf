@@ -55,20 +55,40 @@ void put_iso_line(t_fdf fdf, t_point3 st, t_point3 en, int color)
 	put_line(fdf.mlx_ptr,fdf.win_ptr, iso_st, iso_en, color);
 }
 
+void put_half_iso_line(t_fdf fdf, t_point3 st, t_point3 en, int color)
+{
+	t_point2 iso_st;
+	t_point2 iso_en;
+
+	iso_st.x = (st.x - st.y)* cos(0.463734181);
+	iso_st.y = (st.x + st.y)* sin(0.463734181) - st.z;
+	iso_en.x = (en.x - en.y)* cos(0.463734181);
+	iso_en.y = (en.x + en.y)* sin(0.463734181) - en.z;
+	iso_st.x += (540 + fdf.offset_x);
+	iso_st.y += (360 + fdf.offset_y);
+	iso_en.x += (540 + fdf.offset_x);
+	iso_en.y += (360 + fdf.offset_y);
+	put_line(fdf.mlx_ptr,fdf.win_ptr, iso_st, iso_en, color);
+}
+
 int	put_iso_fdf(t_fdf fdf, int color)
 {
 	t_point2 dot;
-
+	t_draw  f;
+	if (fdf.iso == 0)
+		f = &put_iso_line;
+	if (fdf.iso == 1)
+		f = &put_half_iso_line;
 	dot = init_p2(0,0);
 	while(dot.y < fdf.size.y)
 	{
 		while (dot.x <fdf.size.x)
 		{
 			if (dot.x + 1 < fdf.size.x)
-				put_iso_line(fdf, fdf.points[dot.y][dot.x],\
+				f(fdf, fdf.points[dot.y][dot.x],\
 				fdf.points[dot.y][dot.x + 1], color);
 			if (dot.y + 1 < fdf.size.y)
-				put_iso_line(fdf,fdf.points[dot.y][dot.x],\
+				f(fdf,fdf.points[dot.y][dot.x],\
 				fdf.points[dot.y + 1][dot.x], color);
 			dot.x++;
 		}
