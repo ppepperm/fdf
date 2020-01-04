@@ -61,9 +61,9 @@ typedef struct	s_fdf{
 
 typedef void(*t_draw)(t_fdf, t_point3, t_point3, int);
 
-void	put_line(void *mlx_ptr, void *win_ptr, t_point2 st, t_point2 en, int color);
-int		abs(int a);
+void	put_line(t_fdf fdf, t_point2 st, t_point2 en, int color);
 void	put_iso_line(t_fdf, t_point3 st, t_point3 en, int color);
+void	put_half_iso_line(t_fdf fdf, t_point3 st, t_point3 en, int color);
 int		put_iso_fdf(t_fdf fdf, int color);
 
 t_point2 init_p2(int x, int y);
@@ -86,7 +86,8 @@ t_qatern init_rotor(t_point3 axis, float angle);
 t_qatern inverse(t_qatern base);
 t_qatern multiply(t_qatern q, t_qatern p);
 
-void rotate(t_fdf *fdf, int key);
+void rotate1(t_fdf *fdf, int key);
+void rotate2(t_fdf *fdf, int key);
 void size_change(t_fdf *fdf, int key);
 void move(t_fdf *fdf, int key);
 void projection_change(t_fdf *fdf, int key);

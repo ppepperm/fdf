@@ -14,15 +14,12 @@
 #include "fdf.h"
 #include "libft.h"
 
-
 int check_line(char *line)
 {
 	while (*line)
 	{
-		if ((*line > '9' || *line < '0') && *line != '-'){
-			//ft_putstr(line);
+		if ((*line > '9' || *line < '0') && *line != '-')
 			return (0);
-		}
 		line++;
 	}
 	return (1);
@@ -39,8 +36,7 @@ int	get_size(char *filename, t_point2 *size)
 		return (0);
 	if (!get_next_line(fd, &line))
 		return (0);
-	size->y = 1;
-	size->x = 0;
+	*size = init_p2(0, 1);
 	nums = ft_strsplit(line, ' ');
 	while(nums[size->x])
 	{
@@ -68,6 +64,24 @@ int	get_size(char *filename, t_point2 *size)
 	return (1);
 }
 
+int symbol_check(t_fdf *fdf, char **nums, int x, char *line)
+{
+	if (!check_line(nums[x]))
+	{
+		while (nums[x]) {
+			free(nums[x]);
+			x++;
+		}
+		free(nums);
+		free(line);
+		while (fdf->size.y)
+			free(fdf->points[--fdf->size.y]);
+		free(fdf->points);
+		return (0);
+	}
+	return (1);
+}
+
 int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 {
 	int			fd;
@@ -90,20 +104,8 @@ int	get_fdf(char *filename, t_point2 size, t_fdf *fdf)
 		nums = ft_strsplit(line, ' ');
 		while(nums[size.x])
 		{
-			if (!check_line(nums[size.x]))
-			{
-				while(nums[size.x])
-				{
-					free(nums[size.x]);
-					size.x++;
-				}
-				free(nums);
-				free(line);
-				while(fdf->size.y)
-					free(fdf->points[--fdf->size.y]);
-				free(fdf->points);
+			if (!symbol_check(fdf,nums, size.x, line))
 				return (0);
-			}
 			fdf->points[size.y][size.x] = init_p3(size.x * 10 - fdf->center.x,\
 			size.y * 10  - fdf->center.y, ft_atoi(nums[size.x]) * 2);
 			free(nums[size.x]);

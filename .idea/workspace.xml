@@ -11,14 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2f7aceb7-8b7f-4a79-9c08-d6e542801c93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/draw_isometric.c" beforeDir="false" afterPath="$PROJECT_DIR$/draw_isometric.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fdf" beforeDir="false" afterPath="$PROJECT_DIR$/fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fdf.dSYM/Contents/Resources/DWARF/fdf" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.dSYM/Contents/Resources/DWARF/fdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf.h" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input" beforeDir="false" afterPath="$PROJECT_DIR$/input" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hook_func.c" beforeDir="false" afterPath="$PROJECT_DIR$/hook_func.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input.c" beforeDir="false" afterPath="$PROJECT_DIR$/input.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/libft.a" beforeDir="false" afterPath="$PROJECT_DIR$/libft/libft.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +106,7 @@
       <workItem from="1577956276511" duration="9096000" />
       <workItem from="1578132617050" duration="2136000" />
       <workItem from="1578134946169" duration="188000" />
-      <workItem from="1578135136985" duration="2470000" />
+      <workItem from="1578135136985" duration="6993000" />
     </task>
     <servers />
   </component>
