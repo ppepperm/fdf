@@ -48,7 +48,7 @@ t_point3	**init_table(t_point2 size)
 
 int			free_fdf(t_fdf fdf)
 {
-	free(fdf.win_ptr);
+	mlx_destroy_window(fdf.mlx_ptr,fdf.win_ptr);
 	free(fdf.mlx_ptr);
 	while (fdf.size.y)
 		free(fdf.points[--fdf.size.y]);
