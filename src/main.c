@@ -40,7 +40,11 @@ int	cls(void *param)
 	free_fdf(*fdf);
 	exit(0);
 }
-
+int return_m(char *str)
+{
+	ft_putstr(str);
+	return (0);
+}
 int	main(int ac, char **av)
 {
 	void		*mlx_ptr;
@@ -52,11 +56,10 @@ int	main(int ac, char **av)
 	if (ac)
 	{
 		if (!get_size(av[1], &size))
-			return (0);
-		printf("%d %d\n", size.x, size.y);
+			return (return_m\
+			("Number of raw and coll is wrong or file does not exist\n"));
 		if (!get_fdf(av[1], size, &fdf))
-			return (0);
-		printf("got_fdf\n");
+			return (return_m("Wrong symbol in file\n"));
 	}
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1080, 720, "fdf 21");

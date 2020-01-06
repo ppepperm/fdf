@@ -78,10 +78,10 @@ void		put_half_iso_line(t_fdf fdf, t_point3 st, t_point3 en, int color)
 	t_point2 iso_st;
 	t_point2 iso_en;
 
-	iso_st.x = (st.x - st.y) * cos(0.463734181);
-	iso_st.y = (st.x + st.y) * sin(0.463734181) - st.z;
-	iso_en.x = (en.x - en.y) * cos(0.463734181);
-	iso_en.y = (en.x + en.y) * sin(0.463734181) - en.z;
+	iso_st.x = (st.x - st.y) * cos(0.1);
+	iso_st.y = (st.x + st.y) * sin(0.1) - st.z;
+	iso_en.x = (en.x - en.y) * cos(0.1);
+	iso_en.y = (en.x + en.y) * sin(0.1) - en.z;
 	iso_st.x += (540 + fdf.offset_x);
 	iso_st.y += (360 + fdf.offset_y);
 	iso_en.x += (540 + fdf.offset_x);
