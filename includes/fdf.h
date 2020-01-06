@@ -29,6 +29,7 @@ typedef struct	s_point3
 	float		x;
 	float		y;
 	float		z;
+	int 		colour;
 }				t_point3;
 
 typedef struct	s_qatern
