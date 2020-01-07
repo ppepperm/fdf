@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	t_point2	size;
 
 	size = init_p2(0, 0);
-	if (ac)
+	if (ac == 2)
 	{
 		if (!get_size(av[1], &size))
 			return (return_m\
@@ -61,6 +61,8 @@ int	main(int ac, char **av)
 		if (!get_fdf(av[1], size, &fdf))
 			return (return_m("Wrong symbol in file\n"));
 	}
+	else
+		return (return_m("Wrong number of arguments\n"));
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 1080, 720, "fdf 21");
 	fdf.mlx_ptr = mlx_ptr;
